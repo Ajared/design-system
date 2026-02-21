@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography - ajaRed Design System</title>
+    <link rel="stylesheet" href="../../../core/tokens.css">
+    <link rel="stylesheet" href="./typography.css">
+    <style>
+        body {
+            font-family: var(--font-secondary);
+            padding: var(--space-8);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .example {
+            margin-bottom: var(--space-8);
+            padding-bottom: var(--space-8);
+            border-bottom: 1px solid var(--color-border-light);
+        }
+        .label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-2);
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="ajr-h1">Typography</h1>
+    <p class="ajr-body">Comprehensive typography system for the ajaRed brand</p>
+
+    <div class="example">
+        <div class="label">.ajr-h1</div>
+        <h1 class="ajr-h1">The quick brown fox jumps</h1>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-h2</div>
+        <h2 class="ajr-h2">The quick brown fox jumps</h2>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-h3</div>
+        <h3 class="ajr-h3">The quick brown fox jumps</h3>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-h4</div>
+        <h4 class="ajr-h4">The quick brown fox jumps</h4>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-h5</div>
+        <h5 class="ajr-h5">The quick brown fox jumps</h5>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-h6</div>
+        <h6 class="ajr-h6">The quick brown fox jumps</h6>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-display</div>
+        <div class="ajr-display">Creative Display</div>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-body-lg</div>
+        <p class="ajr-body-lg">Large body text for emphasis. The quick brown fox jumps over the lazy dog.</p>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-body</div>
+        <p class="ajr-body">Regular body text for content. The quick brown fox jumps over the lazy dog.</p>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-body-sm</div>
+        <p class="ajr-body-sm">Small body text for secondary content. The quick brown fox jumps over the lazy dog.</p>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-label</div>
+        <div class="ajr-label">Label Text</div>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-caption</div>
+        <div class="ajr-caption">Caption text for supplementary information</div>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-code</div>
+        <code class="ajr-code">const greeting = 'Hello World';</code>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-code-block</div>
+        <pre class="ajr-code-block">function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('ajaRed'));</pre>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-link</div>
+        <a href="#" class="ajr-link">This is a link</a>
+    </div>
+
+    <div class="example">
+        <div class="label">.ajr-blockquote</div>
+        <blockquote class="ajr-blockquote">
+            Design is not just what it looks like and feels like. Design is how it works.
+        </blockquote>
+    </div>
+
+    <div class="example">
+        <div class="label">Text Colors</div>
+        <p class="ajr-body ajr-text--primary">Primary text color</p>
+        <p class="ajr-body ajr-text--secondary">Secondary text color</p>
+        <p class="ajr-body ajr-text--tertiary">Tertiary text color</p>
+        <p class="ajr-body ajr-text--brand">Brand color</p>
+        <p class="ajr-body ajr-text--accent">Accent color</p>
+    </div>
+
+    <div class="example">
+        <div class="label">Font Weights</div>
+        <p class="ajr-body ajr-text--normal">Normal weight (400)</p>
+        <p class="ajr-body ajr-text--medium">Medium weight (500)</p>
+        <p class="ajr-body ajr-text--semibold">Semibold weight (600)</p>
+        <p class="ajr-body ajr-text--bold">Bold weight (700)</p>
+    </div>
+</body>
+</html>

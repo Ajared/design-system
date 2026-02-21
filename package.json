@@ -1,0 +1,38 @@
+{
+  "name": "ajared-design-system",
+  "version": "1.0.0",
+  "description": "A comprehensive design system for the ajaRed brand with vanilla HTML/CSS/JS components",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=docs",
+    "build": "npm run build --workspaces",
+    "build:components": "npm run build --workspace=@ajared/components",
+    "build:docs": "npm run build --workspace=docs",
+    "clean": "rm -rf packages/*/dist docs/dist",
+    "lint": "eslint packages/components/src docs/assets",
+    "format": "prettier --write \"**/*.{js,css,html,json,md}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chunnodu/ajared-design-system.git"
+  },
+  "keywords": [
+    "design-system",
+    "components",
+    "ui",
+    "css",
+    "vanilla-js",
+    "ajared"
+  ],
+  "author": "ajaRed",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "stylelint": "^16.1.0"
+  }
+}
