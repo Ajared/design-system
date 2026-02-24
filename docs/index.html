@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajaRed Design System</title>
+    <title>ajaRED Design System</title>
     <link rel="stylesheet" href="./assets/ajared.css">
     <style>
+        /* iA Writer Quattro S Font */
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('./assets/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('./assets/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('./assets/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('./assets/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +31,7 @@
         }
 
         body {
-            font-family: var(--font-secondary);
+            font-family: 'iA Writer Quattro S', var(--font-primary);
             background: linear-gradient(135deg, var(--color-primary-lightest) 0%, var(--color-background-secondary) 100%);
             min-height: 100vh;
         }
@@ -196,18 +214,19 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="./index.html" class="logo">ajaRed</a>
+            <a href="./index.html" class="logo">ajaRED</a>
             <ul class="nav-links">
                 <li><a href="./pages/getting-started.html">Get Started</a></li>
                 <li><a href="./pages/tokens.html">Design Tokens</a></li>
                 <li><a href="./pages/components.html">Components</a></li>
+                <li><a href="./pages/specification.html">Technical Spec</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>ajaRed Design System</h1>
+        <h1>ajaRED Design System</h1>
         <p>A comprehensive design system built with vanilla HTML/CSS/JS for consistent, accessible, and beautiful interfaces.</p>
         <div class="hero-buttons">
             <a href="./pages/getting-started.html" class="ajr-button ajr-button--primary ajr-button--lg">Get Started</a>
@@ -301,7 +320,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Built with ❤️ for the ajaRed brand | Design System v1.0.0</p>
+        <p>Built with ❤️ by @chunnodu & claudecode for the ajaRED brand | Design System v1.0.0</p>
     </footer>
 </body>
 </html>

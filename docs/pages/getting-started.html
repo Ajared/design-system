@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started - ajaRed Design System</title>
+    <title>Getting Started - ajaRED Design System</title>
     <link rel="stylesheet" href="../assets/ajared.css">
     <style>
+        /* iA Writer Quattro S Font */
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +31,7 @@
         }
 
         body {
-            font-family: var(--font-secondary);
+            font-family: 'iA Writer Quattro S', var(--font-primary);
             background: linear-gradient(135deg, var(--color-primary-lightest) 0%, var(--color-background-secondary) 100%);
             min-height: 100vh;
         }
@@ -224,11 +242,12 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="../index.html" class="logo">ajaRed</a>
+            <a href="../index.html" class="logo">ajaRED</a>
             <ul class="nav-links">
                 <li><a href="./getting-started.html">Get Started</a></li>
                 <li><a href="./tokens.html">Design Tokens</a></li>
                 <li><a href="./components.html">Components</a></li>
+                <li><a href="./specification.html">Technical Spec</a></li>
             </ul>
         </nav>
     </header>
@@ -238,7 +257,7 @@
         <!-- Page Header -->
         <div class="page-header">
             <h1>Getting Started</h1>
-            <p>Everything you need to start building beautiful interfaces with the ajaRed Design System.</p>
+            <p>Everything you need to start building beautiful interfaces with the ajaRED Design System.</p>
         </div>
 
         <!-- Installation -->
@@ -248,7 +267,7 @@
             <h3>1. Via CDN (Quickest)</h3>
             <p>Add the following to your HTML <code class="inline-code">&lt;head&gt;</code> tag:</p>
             <div class="code-block">
-                <code>&lt;!-- ajaRed Design System CSS --&gt;
+                <code>&lt;!-- ajaRED Design System CSS --&gt;
 &lt;link rel="stylesheet" href="https://unpkg.com/@ajared/design-system/dist/ajared.min.css"&gt;</code>
             </div>
 
@@ -289,12 +308,12 @@ import '@ajared/design-system/dist/ajared.css';</code>
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;My ajaRed App&lt;/title&gt;
+    &lt;title&gt;My ajaRED App&lt;/title&gt;
     &lt;link rel="stylesheet" href="https://unpkg.com/@ajared/design-system/dist/ajared.min.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div style="padding: 2rem;"&gt;
-        &lt;h1 class="ajr-h1"&gt;Hello, ajaRed!&lt;/h1&gt;
+        &lt;h1 class="ajr-h1"&gt;Hello, ajaRED!&lt;/h1&gt;
         &lt;p class="ajr-body"&gt;Get started with beautiful components.&lt;/p&gt;
         &lt;button class="ajr-button ajr-button--primary ajr-button--md"&gt;
             Get Started
@@ -305,7 +324,7 @@ import '@ajared/design-system/dist/ajared.css';</code>
             </div>
 
             <div class="info-alert">
-                <p><strong>💡 Tip:</strong> All ajaRed components use the <code class="inline-code">ajr-</code> prefix to avoid conflicts with your existing styles.</p>
+                <p><strong>💡 Tip:</strong> All ajaRED components use the <code class="inline-code">ajr-</code> prefix to avoid conflicts with your existing styles.</p>
             </div>
         </section>
 
@@ -459,7 +478,7 @@ document.body.appendChild(button);</code>
         <!-- Accessibility -->
         <section class="content-section">
             <h2>Accessibility</h2>
-            <p>All ajaRed components are built with accessibility in mind and follow WCAG 2.1 AA guidelines:</p>
+            <p>All ajaRED components are built with accessibility in mind and follow WCAG 2.1 AA guidelines:</p>
             <ul>
                 <li><strong>Keyboard Navigation:</strong> All interactive components support keyboard navigation</li>
                 <li><strong>Screen Readers:</strong> Proper ARIA labels and roles are included</li>
@@ -476,7 +495,7 @@ document.body.appendChild(button);</code>
         <!-- Browser Support -->
         <section class="content-section">
             <h2>Browser Support</h2>
-            <p>ajaRed Design System supports all modern browsers:</p>
+            <p>ajaRED Design System supports all modern browsers:</p>
             <ul>
                 <li>Chrome (latest 2 versions)</li>
                 <li>Firefox (latest 2 versions)</li>

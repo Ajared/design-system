@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Components - ajaRed Design System</title>
+    <title>Components - ajaRED Design System</title>
     <link rel="stylesheet" href="../assets/ajared.css">
     <style>
+        /* iA Writer Quattro S Font */
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +31,7 @@
         }
 
         body {
-            font-family: var(--font-secondary);
+            font-family: 'iA Writer Quattro S', var(--font-primary);
             background-color: var(--color-background-secondary);
         }
 
@@ -135,11 +153,12 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="../index.html" class="logo">ajaRed</a>
+            <a href="../index.html" class="logo">ajaRED</a>
             <ul class="nav-links">
                 <li><a href="./getting-started.html">Get Started</a></li>
                 <li><a href="./tokens.html">Design Tokens</a></li>
                 <li><a href="./components.html" style="color: var(--color-primary);">Components</a></li>
+                <li><a href="./specification.html">Technical Spec</a></li>
             </ul>
         </nav>
     </header>
@@ -204,7 +223,7 @@
   return `Hello, ${name}!`;
 }
 
-console.log(greet('ajaRed'));</pre>
+console.log(greet('ajaRED'));</pre>
             </div>
         </section>
 

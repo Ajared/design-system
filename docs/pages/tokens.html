@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Tokens - ajaRed Design System</title>
+    <title>Design Tokens - ajaRED Design System</title>
     <link rel="stylesheet" href="../assets/ajared.css">
     <style>
+        /* iA Writer Quattro S Font */
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('../assets/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('../assets/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +31,7 @@
         }
 
         body {
-            font-family: var(--font-secondary);
+            font-family: 'iA Writer Quattro S', var(--font-primary);
             background-color: var(--color-background-secondary);
         }
 
@@ -198,11 +216,12 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <a href="../index.html" class="logo">ajaRed</a>
+            <a href="../index.html" class="logo">ajaRED</a>
             <ul class="nav-links">
                 <li><a href="./getting-started.html">Get Started</a></li>
                 <li><a href="./tokens.html" style="color: var(--color-primary);">Design Tokens</a></li>
                 <li><a href="./components.html">Components</a></li>
+                <li><a href="./specification.html">Technical Spec</a></li>
             </ul>
         </nav>
     </header>
@@ -210,7 +229,7 @@
     <div class="container">
         <div class="page-header">
             <h1 class="ajr-h1" style="margin-bottom: var(--space-3);">Design Tokens</h1>
-            <p class="ajr-body-lg ajr-text--secondary">The visual foundation of the ajaRed brand. 160+ tokens extracted from Figma.</p>
+            <p class="ajr-body-lg ajr-text--secondary">The visual foundation of the ajaRED brand. 160+ tokens extracted from Figma.</p>
         </div>
 
         <!-- Colors -->
@@ -252,7 +271,7 @@
             <h3>Accent Colors</h3>
             <div class="color-grid">
                 <div class="color-swatch">
-                    <div class="color-preview" style="background-color: var(--color-accent-terracotta-default); color: white;">Aa</div>
+                    <div class="color-preview" style="background-color: var(--color-accent-terracotta); color: white;">Aa</div>
                     <div class="color-info">
                         <div class="color-name">Terracotta</div>
                         <div class="color-value">#a1665e</div>
@@ -284,28 +303,28 @@
             <h3>Semantic Colors</h3>
             <div class="color-grid">
                 <div class="color-swatch">
-                    <div class="color-preview" style="background-color: var(--color-semantic-success-default); color: white;">Aa</div>
+                    <div class="color-preview" style="background-color: var(--color-success); color: white;">Aa</div>
                     <div class="color-info">
                         <div class="color-name">Success</div>
                         <div class="color-value">#61b258</div>
                     </div>
                 </div>
                 <div class="color-swatch">
-                    <div class="color-preview" style="background-color: var(--color-semantic-warning-default);">Aa</div>
+                    <div class="color-preview" style="background-color: var(--color-warning);">Aa</div>
                     <div class="color-info">
                         <div class="color-name">Warning</div>
                         <div class="color-value">#d6b739</div>
                     </div>
                 </div>
                 <div class="color-swatch">
-                    <div class="color-preview" style="background-color: var(--color-semantic-error-default); color: white;">Aa</div>
+                    <div class="color-preview" style="background-color: var(--color-error); color: white;">Aa</div>
                     <div class="color-info">
                         <div class="color-name">Error</div>
                         <div class="color-value">#8c1305</div>
                     </div>
                 </div>
                 <div class="color-swatch">
-                    <div class="color-preview" style="background-color: var(--color-semantic-info-default); color: white;">Aa</div>
+                    <div class="color-preview" style="background-color: var(--color-info); color: white;">Aa</div>
                     <div class="color-info">
                         <div class="color-name">Info</div>
                         <div class="color-value">#71c5e6</div>
@@ -474,13 +493,31 @@
         <section class="section">
             <h2>Border Radius</h2>
 
-            <div class="shadow-grid">
-                <div class="shadow-box" style="border-radius: var(--radius-sm); background: var(--color-primary); color: white;">sm (2px)</div>
-                <div class="shadow-box" style="border-radius: var(--radius-base); background: var(--color-primary); color: white;">base (4px)</div>
-                <div class="shadow-box" style="border-radius: var(--radius-md); background: var(--color-primary); color: white;">md (6px)</div>
-                <div class="shadow-box" style="border-radius: var(--radius-lg); background: var(--color-primary); color: white;">lg (8px)</div>
-                <div class="shadow-box" style="border-radius: var(--radius-xl); background: var(--color-primary); color: white;">xl (12px)</div>
-                <div class="shadow-box" style="border-radius: var(--radius-full); background: var(--color-primary); color: white; aspect-ratio: 1;">full</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-6); align-items: end;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 80px; height: 80px; border-radius: var(--radius-sm); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">sm (2px)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 90px; height: 90px; border-radius: var(--radius-base); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">base (4px)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 100px; height: 100px; border-radius: var(--radius-md); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">md (6px)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 110px; height: 110px; border-radius: var(--radius-lg); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">lg (8px)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 120px; height: 120px; border-radius: var(--radius-xl); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">xl (12px)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-2);">
+                    <div style="width: 120px; height: 120px; border-radius: var(--radius-full); background: var(--color-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: var(--font-weight-semibold);"></div>
+                    <span style="font-family: var(--font-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary);">full (circle)</span>
+                </div>
             </div>
         </section>
     </div>
