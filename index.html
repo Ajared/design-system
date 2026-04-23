@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ajaRed Design System</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="colors_and_type.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-ink-darkest);
+      font-family: var(--font-primary);
+      cursor: crosshair;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { cursor: crosshair; }
+
+    /* ── RULER ── */
+    .ruler {
+      position: sticky; top: 0; z-index: 100;
+      height: 20px;
+      border-bottom: var(--grid-line);
+      display: flex; align-items: stretch;
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+    .ruler-col {
+      width: 80px; flex-shrink: 0;
+      border-right: var(--grid-line);
+    }
+    .ruler-track {
+      flex: 1;
+      display: flex; align-items: center;
+    }
+    .ruler-ticks {
+      width: 100%; height: 100%;
+      background-image:
+        repeating-linear-gradient(to right,
+          var(--color-ink-light) 0, var(--color-ink-light) 1px,
+          transparent 1px, transparent 20px),
+        repeating-linear-gradient(to right,
+          var(--color-ink) 0, var(--color-ink) 1px,
+          transparent 1px, transparent 100px);
+      background-size: 20px 8px, 100px 12px;
+      background-repeat: repeat-x;
+      background-position: 0 bottom, 0 bottom;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      border-bottom: var(--grid-line);
+      max-width: 1600px;
+    }
+    .header-rule {
+      border-right: var(--grid-line);
+      padding: 2rem 1.25rem;
+      display: flex; flex-direction: column; justify-content: flex-end; gap: 0.25rem;
+    }
+    .coord {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--color-ink);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .header-body {
+      padding: 2rem 2.5rem 1.75rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .wordmark {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .wordmark img { height: 28px; width: auto; }
+    .wordmark span {
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--color-ink-darkest);
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--color-ink-darkest);
+    }
+    header h1 span { color: var(--color-terra); }
+    .header-meta {
+      display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .meta-item {
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+    }
+    .meta-value {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-ink-darkest);
+    }
+
+    /* ── MAIN GRID ── */
+    main {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      max-width: 1600px;
+    }
+    .side-rule {
+      border-right: var(--grid-line);
+      position: relative;
+    }
+    .tick-labels {
+      position: absolute; top: 0; right: 0;
+      display: flex; flex-direction: column;
+    }
+    .tick {
+      height: 100px;
+      display: flex; align-items: flex-start; justify-content: flex-end;
+      padding-right: 6px; padding-top: 2px;
+      border-bottom: 1px solid var(--color-ink-light);
+    }
+    .tick span {
+      font-family: var(--font-mono);
+      font-size: 0.5rem;
+      color: var(--color-ink-light);
+      letter-spacing: 0.04em;
+    }
+    .tick.major span { color: var(--color-terra); }
+    .content { padding: 2.5rem; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 3rem; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: var(--grid-line);
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      border: var(--grid-line);
+    }
+    .card-link {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      padding: 1.25rem 1.5rem;
+      border: none;
+      text-decoration: none;
+      color: var(--color-ink-darkest);
+      background: var(--color-bg);
+      transition: background 0.25s ease, color 0.25s ease;
+      position: relative;
+    }
+    .card-link::after {
+      content: '→';
+      position: absolute;
+      bottom: 1.25rem; right: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--color-terra);
+      transition: transform 0.25s ease;
+    }
+    .card-link:hover {
+      background: var(--color-ink-darkest);
+      color: #fff;
+    }
+    .card-link:hover::after { transform: translateX(6px); }
+    .card-link:hover .card-tag { color: rgba(255,255,255,0.5); }
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+      transition: color 0.25s ease;
+    }
+    .card-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    /* ── KIT CARDS (larger) ── */
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1px;
+      border: var(--grid-line);
+    }
+    .kit-link {
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 1.75rem 2rem;
+      text-decoration: none;
+      color: var(--color-ink-darkest);
+      background: var(--color-bg);
+      transition: background 0.25s ease, color 0.25s ease;
+      min-height: 160px;
+    }
+    .kit-link:hover { background: var(--color-ink-darkest); color: #fff; }
+    .kit-link:hover .kit-tag { color: rgba(255,255,255,0.5); }
+    .kit-link:hover .kit-arrow { transform: translateX(6px); color: #fff; }
+    .kit-top { display: flex; flex-direction: column; gap: 0.4rem; }
+    .kit-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+      transition: color 0.25s ease;
+    }
+    .kit-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .kit-desc {
+      font-size: 0.76rem;
+      color: var(--color-ink-dark);
+      line-height: 1.5;
+      margin-top: 0.25rem;
+      transition: color 0.25s ease;
+    }
+    .kit-link:hover .kit-desc { color: rgba(255,255,255,0.7); }
+    .kit-arrow {
+      font-size: 0.85rem;
+      color: var(--color-terra);
+      transition: transform 0.25s ease, color 0.25s ease;
+      align-self: flex-end;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid var(--color-terra);
+      padding: 1.5rem 2.5rem 1.5rem calc(80px + 2.5rem);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      max-width: 1600px;
+    }
+    footer a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--color-terra); }
+    footer span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-neutral-400);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ruler">
+  <div class="ruler-col"></div>
+  <div class="ruler-track"><div class="ruler-ticks"></div></div>
+</div>
+
+<header>
+  <div class="header-rule">
+    <span class="coord">43.6°N</span>
+    <span class="coord">79.4°W</span>
+  </div>
+  <div class="header-body">
+    <div class="wordmark">
+      <img src="assets/logo.png" alt="Ajared Research Inc.">
+      <span>Ajared Research Inc.</span>
+    </div>
+    <h1>ajaRed Design <span>System.</span></h1>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Version</span>
+        <span class="meta-value">1.0</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Stack</span>
+        <span class="meta-value">Vanilla CSS / JSX</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Prefix</span>
+        <span class="meta-value">ajr-</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Fonts</span>
+        <span class="meta-value">iA Writer Quattro S + Mono S</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="side-rule">
+    <div class="tick-labels">
+      <div class="tick"><span>0</span></div>
+      <div class="tick"><span>100</span></div>
+      <div class="tick"><span>200</span></div>
+      <div class="tick"><span>300</span></div>
+      <div class="tick"><span>400</span></div>
+      <div class="tick major"><span>500</span></div>
+      <div class="tick"><span>600</span></div>
+      <div class="tick"><span>700</span></div>
+      <div class="tick"><span>800</span></div>
+      <div class="tick"><span>900</span></div>
+      <div class="tick major"><span>1000</span></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- UI KITS -->
+    <div class="section">
+      <div class="section-label">01 — UI Kits</div>
+      <div class="kit-grid">
+        <a class="kit-link" href="ui_kits/website/index.html">
+          <div class="kit-top">
+            <span class="kit-tag">Marketing</span>
+            <span class="kit-name">Website Kit</span>
+            <span class="kit-desc">Editorial marketing surface. Header, hero, offer cards, capability blocks, contact, footer — ajared.ca in React.</span>
+          </div>
+          <span class="kit-arrow">→</span>
+        </a>
+        <a class="kit-link" href="ui_kits/app/index.html">
+          <div class="kit-top">
+            <span class="kit-tag">Mobile App</span>
+            <span class="kit-name">Family Tree Kit</span>
+            <span class="kit-desc">Mobile shell for the Family Tree app. Splash, login, tree view, invites, account — iOS-like frames.</span>
+          </div>
+          <span class="kit-arrow">→</span>
+        </a>
+        <a class="kit-link" href="ui_kits/sos/index.html">
+          <div class="kit-top">
+            <span class="kit-tag">Mobile App</span>
+            <span class="kit-name">Sense of Self Kit</span>
+            <span class="kit-desc">Identity reflection companion. Onboarding, today, reflect, prompts, library, profile screens.</span>
+          </div>
+          <span class="kit-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOUNDATIONS -->
+    <div class="section">
+      <div class="section-label">02 — Color</div>
+      <div class="card-grid">
+        <a class="card-link" href="preview/color-primary-teal.html">
+          <span class="card-tag">Primary</span>
+          <span class="card-name">Teal Scale</span>
+        </a>
+        <a class="card-link" href="preview/color-accents.html">
+          <span class="card-tag">Accents</span>
+          <span class="card-name">Terracotta + Extended</span>
+        </a>
+        <a class="card-link" href="preview/color-neutrals.html">
+          <span class="card-tag">Neutrals</span>
+          <span class="card-name">Neutral Scale</span>
+        </a>
+        <a class="card-link" href="preview/color-semantic.html">
+          <span class="card-tag">Semantic</span>
+          <span class="card-name">Success / Warning / Error</span>
+        </a>
+        <a class="card-link" href="preview/charts-palette.html">
+          <span class="card-tag">Data Viz</span>
+          <span class="card-name">Charts Palette</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">03 — Typography</div>
+      <div class="card-grid">
+        <a class="card-link" href="preview/type-display.html">
+          <span class="card-tag">Display</span>
+          <span class="card-name">Hero & Display</span>
+        </a>
+        <a class="card-link" href="preview/type-headings.html">
+          <span class="card-tag">Headings</span>
+          <span class="card-name">H1 – H6</span>
+        </a>
+        <a class="card-link" href="preview/type-body.html">
+          <span class="card-tag">Body</span>
+          <span class="card-name">Body & Prose</span>
+        </a>
+        <a class="card-link" href="preview/type-mono-labels.html">
+          <span class="card-tag">Mono</span>
+          <span class="card-name">Labels & Coordinates</span>
+        </a>
+        <a class="card-link" href="preview/voice-sample.html">
+          <span class="card-tag">Voice</span>
+          <span class="card-name">Tone & Copy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">04 — Layout & Motion</div>
+      <div class="card-grid">
+        <a class="card-link" href="preview/spacing-scale.html">
+          <span class="card-tag">Spacing</span>
+          <span class="card-name">8-pt Scale</span>
+        </a>
+        <a class="card-link" href="preview/grid-ruler.html">
+          <span class="card-tag">Grid</span>
+          <span class="card-name">Ruler & Grid</span>
+        </a>
+        <a class="card-link" href="preview/radii.html">
+          <span class="card-tag">Radii</span>
+          <span class="card-name">Border Radius</span>
+        </a>
+        <a class="card-link" href="preview/shadows.html">
+          <span class="card-tag">Shadows</span>
+          <span class="card-name">Elevation Scale</span>
+        </a>
+        <a class="card-link" href="preview/motion.html">
+          <span class="card-tag">Motion</span>
+          <span class="card-name">Timing & Easing</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">05 — Components</div>
+      <div class="card-grid">
+        <a class="card-link" href="preview/buttons-marketing.html">
+          <span class="card-tag">Buttons</span>
+          <span class="card-name">Marketing Buttons</span>
+        </a>
+        <a class="card-link" href="preview/buttons-app.html">
+          <span class="card-tag">Buttons</span>
+          <span class="card-name">App Buttons</span>
+        </a>
+        <a class="card-link" href="preview/inputs.html">
+          <span class="card-tag">Inputs</span>
+          <span class="card-name">Form Inputs</span>
+        </a>
+        <a class="card-link" href="preview/card-offer.html">
+          <span class="card-tag">Card</span>
+          <span class="card-name">Offer Card</span>
+        </a>
+        <a class="card-link" href="preview/badges.html">
+          <span class="card-tag">Badge</span>
+          <span class="card-name">Badges</span>
+        </a>
+        <a class="card-link" href="preview/alerts.html">
+          <span class="card-tag">Alert</span>
+          <span class="card-name">Alerts</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">06 — Brand</div>
+      <div class="card-grid">
+        <a class="card-link" href="preview/brand-logo.html">
+          <span class="card-tag">Brand</span>
+          <span class="card-name">Logo</span>
+        </a>
+        <a class="card-link" href="preview/brand-header.html">
+          <span class="card-tag">Brand</span>
+          <span class="card-name">Site Header</span>
+        </a>
+        <a class="card-link" href="preview/icons.html">
+          <span class="card-tag">Icons</span>
+          <span class="card-name">Icon Primitives</span>
+        </a>
+        <a class="card-link" href="preview/icons-glyphs.html">
+          <span class="card-tag">Icons</span>
+          <span class="card-name">Glyphs</span>
+        </a>
+        <a class="card-link" href="preview/icons-library.html">
+          <span class="card-tag">Icons</span>
+          <span class="card-name">Material Symbols</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <a href="https://ajared.ca">ajared.ca ↗</a>
+  <span>Ajared Research Inc. · Applied AI for Enterprises · Toronto 43.6332° N, 79.4141° W</span>
+</footer>
+
+</body>
+</html>
