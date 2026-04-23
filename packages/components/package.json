@@ -1,0 +1,39 @@
+{
+  "name": "@ajared/components",
+  "version": "1.0.0",
+  "description": "Vanilla HTML/CSS/JS component library for the ajaRed design system",
+  "type": "module",
+  "main": "dist/ajared.js",
+  "style": "dist/ajared.css",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": "./dist/ajared.js",
+    "./css": "./dist/ajared.css"
+  },
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node build-css.js",
+    "build:js": "node build-js.js",
+    "watch": "npm run build:css -- --watch & npm run build:js -- --watch"
+  },
+  "keywords": [
+    "components",
+    "ui",
+    "vanilla-js",
+    "design-system",
+    "ajared"
+  ],
+  "author": "ajaRed",
+  "license": "MIT",
+  "dependencies": {
+    "@ajared/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "clean-css": "^5.3.3",
+    "glob": "^10.3.10"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@ajared/core",
+  "version": "1.0.0",
+  "description": "Design tokens for the ajaRed design system",
+  "main": "tokens.json",
+  "files": [
+    "tokens.css",
+    "tokens.json",
+    "tailwind.config.js"
+  ],
+  "exports": {
+    ".": "./tokens.json",
+    "./css": "./tokens.css",
+    "./tailwind": "./tailwind.config.js"
+  },
+  "keywords": [
+    "design-tokens",
+    "css-variables",
+    "tailwind",
+    "ajared"
+  ],
+  "author": "ajaRed",
+  "license": "MIT"
+}
