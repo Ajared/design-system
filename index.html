@@ -225,6 +225,35 @@
     .ic { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 9px; color: #626262; text-align: center; }
     .ic .material-symbols-outlined { font-size: 22px; color: #141414; }
 
+    /* ── NAV ── */
+    nav {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      border-bottom: var(--grid-line);
+      max-width: 1600px;
+    }
+    .nav-rule { border-right: var(--grid-line); }
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-ink);
+      text-decoration: none;
+      padding: 0.6rem 1.25rem;
+      border-right: var(--grid-line);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--color-terra); background: var(--color-primary-lightest, #e6f4f4); }
+    .nav-links a .nav-num { color: var(--color-ink-light); }
+
     /* ── FOOTER ── */
     footer {
       border-top: 2px solid var(--color-terra);
@@ -264,6 +293,16 @@
     </div>
   </div>
 </header>
+
+<nav>
+  <div class="nav-rule"></div>
+  <div class="nav-links">
+    <a href="pages/getting-started.html"><span class="nav-num">01 /</span> Getting Started</a>
+    <a href="pages/tokens.html"><span class="nav-num">02 /</span> Design Tokens</a>
+    <a href="pages/components.html"><span class="nav-num">03 /</span> Component Library</a>
+    <a href="pages/specification.html"><span class="nav-num">04 /</span> Technical Spec</a>
+  </div>
+</nav>
 
 <main>
   <div class="side-rule">
@@ -1070,66 +1109,6 @@
 
   </div>
 
-    <!-- 07 — DOCS -->
-    <div class="section">
-      <div class="section-label">07 — Docs</div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="toggle(this)">
-          <span class="acc-tag">Onboarding</span>
-          <span class="acc-name">Getting Started</span>
-          <span class="acc-toggle">+</span>
-        </button>
-        <div class="accordion-panel">
-          <div class="panel-inner">
-            <p class="panel-desc">Installation, usage, CDN link, and quick-start patterns for the ajaRed Design System.</p>
-            <iframe src="pages/getting-started.html" height="860" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="toggle(this)">
-          <span class="acc-tag">Tokens</span>
-          <span class="acc-name">Design Tokens</span>
-          <span class="acc-toggle">+</span>
-        </button>
-        <div class="accordion-panel">
-          <div class="panel-inner">
-            <p class="panel-desc">Full token reference — colors, typography scale, spacing, elevation, and border radius values.</p>
-            <iframe src="pages/tokens.html" height="860" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="toggle(this)">
-          <span class="acc-tag">Components</span>
-          <span class="acc-name">Component Library</span>
-          <span class="acc-toggle">+</span>
-        </button>
-        <div class="accordion-panel">
-          <div class="panel-inner">
-            <p class="panel-desc">Live examples of every component — typography, button, input, card, alert, badge, spinner, modal.</p>
-            <iframe src="pages/components.html" height="860" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <button class="accordion-header" onclick="toggle(this)">
-          <span class="acc-tag">Spec</span>
-          <span class="acc-name">Technical Specification</span>
-          <span class="acc-toggle">+</span>
-        </button>
-        <div class="accordion-panel">
-          <div class="panel-inner">
-            <p class="panel-desc">Formal type, colour, spacing, and motion specifications — poster-style reference sheet.</p>
-            <iframe src="pages/specification.html" height="860" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
 </main>
 
 <footer>
