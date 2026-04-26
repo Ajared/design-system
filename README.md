@@ -6,6 +6,8 @@ The visual, verbal, and component system for **Ajared Research Inc.** — an AI 
 > Mission: help enterprises move from AI proof-of-concept to production-ready solutions.
 > Primary site: [ajared.ca](https://ajared.ca) · Also: ajared.ng · innovation@ajared.ca
 
+**Design system:** [ajared.github.io/design-system](https://ajared.github.io/design-system)
+
 ---
 
 ## Index
